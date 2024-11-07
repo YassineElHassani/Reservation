@@ -6,6 +6,7 @@
     <title>Reservation</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
 <body class="h-[900px]">
   <nav class="bg-gray-800">
@@ -79,125 +80,141 @@
       <!-- Steps -->
       <div class="form-step form-step-active">
         <div class="input-group" style="text-align: center;">
-            <h1 style="font-weight: 900;">Commencer la reservation</h1><br><br>
+            <h2 style="font-weight: 900;">Commencer la reservation</h2><br><br>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tortor ipsum, eleifend vitae massa non, dignissim finibus eros. Maecenas non eros tristique nisl maximus sollicitudin.</p>
         </div>
+        <div id="alertMsg"></div>
         <div class="input-group">
-          <input type="text" name="name" id="name" placeholder="Nom et Prenom" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;"/>
+          <input type="text" name="name" id="name" placeholder="Nom et Prenom" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
         </div>
         <div class="input-group">
-            <input type="text" name="email" id="email" placeholder="E-mail" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;"/>
+            <input type="text" name="email" id="email" placeholder="E-mail" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
         </div>
         <div class="input-group">
-            <input type="text" name="phone" id="phone" placeholder="Telephone" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;"/>
+            <input type="text" name="phone" id="phone" placeholder="Telephone" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
         </div>
         <div class="">
-          <span class="btn btn-next width-50 ml-auto">Next</span>
+          <button type="button" class="btn btn-next width-50 ml-auto">Next</button>
         </div>
       </div>
+
       <div class="form-step">
         <div class="input-group" style="text-align: center;">
-            <h1 style="text-align: center;">La gare et la date</h1>
-            <select style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+            <h2 style="font-weight: 900;">La gare et la date</h2><br><br>
+            <select id="depart" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required>
               <option value="">La gare de départ</option>
               <option value="">Marrakech</option>
-              <option value="">Marrakech</option>
+              <option value="">Casablanca</option>
+              <option value="">Tanger</option>
+              <option value="">Fes</option>
             </select>
         </div>
         <div class="input-group" style="text-align: center;">
-          <select style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
+          <select id="finish" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required>
             <option value="">La gare d'arriver</option>
-            <option value="">Marrakech</option>
-            <option value="">Marrakech</option>
+            <option value="">Paris</option>
+            <option value="">London</option>
+            <option value="">Tokyo</option>
+            <option value="">Lisbon</option>
           </select>
         </div>
         <div class="input-group" style="text-align: center;">
-          <input type="date" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;"/>
+          <input id="date" type="date" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
         </div>
-        
-        <div class="input-group">
-        </div>
-
         <div class="btns-group">
-          <span class="btn btn-prev">Previous</span>
-          <span class="btn btn-next">Next</span>
+          <button type="button" class="btn btn-prev">Previous</button>
+          <button type="button" class="btn btn-next">Next</button>
         </div>
       </div>
 
       <div class="form-step">
         <div class="input-group">
-          <h1 style="text-align: center;">Les resultat de recherche</h1>
-        <div style="display: flex; flex-direction: column;">
-          <div style="background-color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 18px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
+        <h2 style="text-align: center; font-weight: 900;">Les resultat de recherche</h2><br><br>
+        <div style="display: flex; flex-direction: column;" id="wrapper">
+
+          <input id="flight1" type="checkbox" name="flight1"/>
+          <label for="flight1">
+            <div type="button" class="choice" id="c1">
+              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
               <span>6:30</span>
               <img width="50px" src="./assets/airplane.png">
               <span>8:45</span>
-          </div>
-          <div style="background-color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 18px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
-              <span>6:30</span>
+            </div>
+          </label>
+          <input id="flight2" type="checkbox" name="flight2"/>
+          <label for="flight2">
+            <div type="button" class="choice" id="c2">
+              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+              <span>10:00</span>
               <img width="50px" src="./assets/airplane.png">
-              <span>8:45</span>
-          </div>
-          <div style="background-color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 18px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
-              <span>6:30</span>
+              <span>15:45</span>
+            </div>
+          </label>
+          <input id="flight3" type="checkbox" name="flight3"/>
+          <label for="flight3">
+            <div type="button" class="choice" id="c3">
+              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+              <span>14:15</span>
               <img width="50px" src="./assets/airplane.png">
-              <span>8:45</span>
-          </div>
-          <div style="background-color: #fff; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 15px 20px; text-align: center; border-radius: 18px; box-shadow: 0px 2px 40px -15px #70afd0; border: 1px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;">
-              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg" alt="">
-              <span>6:30</span>
+              <span>20:00</span>
+            </div>
+          </label>
+          <input id="flight4" type="checkbox" name="flight4"/>
+          <label for="flight4">
+            <div type="button" class="choice" id="c4">
+              <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+              <span>18:00</span>
               <img width="50px" src="./assets/airplane.png">
-              <span>8:45</span>
-          </div>
+              <span>3:00</span>
+            </div>
+          </label>
+          
         </div>
         </div>
         <div class="btns-group">
-          <span class="btn btn-prev">Previous</span>
-          <span class="btn btn-next">Next</span>
+          <button class="btn btn-prev">Previous</button>
+          <button class="btn btn-next">Next</button>
         </div>
       </div>
       
       <div class="form-step">
         <div class="input-group">
-            <h1 style="text-align: center;">Voyageurs</h1>
+            <h2 style="text-align: center; font-weight: 900;">Voyageurs</h2><br><br>
             <div style="display: flex; justify-content: space-between; padding: 10px;">
                 <div>
                     <h4>Adult (Prix 500DH)</h4>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
+                        <button id="addAdlCount" style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
                         <span>1</span>
-                        <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
+                        <button id="minAdlCount" style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                     </div>
                 </div>
                 <div style="width: 5px; background-color: #2e6c8e;"></div>
                 <div>
                     <h4>Enfant (Prix 100DH)</h4>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
+                        <button id="addKidsCount" style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">+</button>
                         <span>1</span>
-                        <button style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
+                        <button id="minKidsCount" style="border-radius: 50%; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
                     </div>
                 </div>
-            </div>
+            </div><br><br>
             <h4>Choisissez votre place</h4>
-            <div style="display: grid; justify-content: center; grid-template-columns: auto auto auto auto; gap: 20px;">
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-                <button style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">-</button>
-            </div>
-            <h4 style="text-align: center;">Prix Total : 0000DH</h4>
+            <div class="selectable-wrap">
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+                <button class="selectable"></button>
+            </div><br><br>
+            <h4 style="text-align: center; color: #ff2600;">Prix Total : 0000DH</h4>
         </div>
         <div class="btns-group">
-          <span class="btn btn-prev">Previous</span>
-          <span class="btn btn-next">Next</span>
+          <button class="btn btn-prev">Previous</button>
+          <button class="btn btn-next">Next</button>
         </div>
       </div>
 
@@ -220,8 +237,8 @@
             </div>
         </div>
         <div class="btns-group">
-          <span class="btn btn-prev">Previous</span>
-          <input type="submit" value="Submit" class="btn" />
+          <button class="btn btn-prev">Previous</button>
+          <input type="submit" value="Download" class="btn-download" />
         </div>
       </div>
     </form>
