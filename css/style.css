@@ -26,7 +26,7 @@ body {
   min-height: 100vh;
   margin-top: 50px;
   margin-bottom: 50px;
-  padding: 50px 35px 10px 35px;
+  padding: 50px;
 }
 
 .form {
@@ -217,4 +217,19 @@ input {
 .form-step .input-group .choice:hover {
   border-color: #666;
   margin: 15px;
+}
+
+@media (max-width: 890px) {
+  nav {
+    width: 100vw;
+    padding: 1rem;
+  }
+  .form {
+    width: 400px;
+    padding: 1rem;
+  }
+  header {
+    width: 100vw;
+    padding: auto;
+  }
 }

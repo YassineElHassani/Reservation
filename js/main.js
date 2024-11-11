@@ -31,10 +31,8 @@ let countK = 0;
 
 let total = document.getElementById("totalPrix");
 
-// Prev buttons & task progress
 let formStepsNum = 0;
 
-// Populate initial flight data
 const flightOptions = {
   flight1: { flight: "Royal Air Maroc", tempsDeDepart: "6:30", TempsDArrival: "8:45" },
   flight2: { flight: "Rayanair", tempsDeDepart: "10:00", TempsDArrival: "15:45" },
@@ -43,7 +41,6 @@ const flightOptions = {
 };
 let selectedFlight = {};
 
-// Function to go to previous step
 prevBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (formStepsNum > 0) {
@@ -55,7 +52,6 @@ prevBtn.forEach((btn) => {
   });
 });
 
-// Function to update the active form step
 function updateFormSteps() {
   formSteps.forEach((formStep) => {
     formStep.classList.remove("form-step-active");
@@ -63,7 +59,6 @@ function updateFormSteps() {
   formSteps[formStepsNum].classList.add("form-step-active");
 }
 
-// Function to update the progress bar
 function updateProgressBar() {
   progressSteps.forEach((progressStep, idx) => {
     if (idx < formStepsNum + 1) {
@@ -78,7 +73,6 @@ function updateProgressBar() {
     ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
 
-// Count person functions
 function addCountAdult() {
   countA++;
   countAdult.innerHTML = `${countA}`;
@@ -113,7 +107,6 @@ function updateTotal() {
   total.innerHTML = `Total: ${adultPrix + kidsPrix} MAD`;
 }
 
-// Populate form data when going back to a previous step
 function populateFormData() {
   nameInput.value = placesData.name || "";
   emailInput.value = placesData.email || "";
@@ -134,7 +127,6 @@ function populateFormData() {
   flightOptions.value = placesData.flightOptions || "";
 }
 
-// Save and retrieve the form data for places
 function getData() {
   return {
     name: nameInput.value,
@@ -157,7 +149,6 @@ function getData() {
   };
 }
 
-// Handling next buttons to progress to the next step
 nextBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum++;
