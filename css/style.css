@@ -79,7 +79,7 @@ input {
   transform: translateY(-50%);
   height: 4px;
   width: 100%;
-  background-color: #a19f9f;
+  background-color: #ccc6c6;
   z-index: 1;
 }
 
@@ -92,7 +92,7 @@ input {
 .progress-step {
   width: 2.1875rem;
   height: 2.1875rem;
-  background-color: #ffffff;
+  background-color: #a6cde2;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -215,7 +215,7 @@ input {
 }
 
 .form-step .input-group .choice:hover {
-  border-color: #666;
+  border-color: #666666;
   margin: 15px;
 }
 
