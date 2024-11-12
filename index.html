@@ -6,6 +6,7 @@
     <title>Reservation</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     
 </head>
 <body class="h-[900px]">
@@ -85,13 +86,13 @@
         </div>
         <div id="alertMsg"></div>
         <div class="input-group">
-          <input type="text" name="name" id="name" placeholder="Nom et Prenom" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
+          <input type="text" name="name" id="name" placeholder="Nom et Prenom" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required"/>
         </div>
         <div class="input-group">
-            <input type="text" name="email" id="email" placeholder="E-mail" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
+            <input type="text" name="email" id="email" placeholder="E-mail" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required"/>
         </div>
         <div class="input-group">
-            <input type="text" name="phone" id="phone" placeholder="Telephone" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
+            <input type="text" name="phone" id="phone" placeholder="Telephone" style="margin-top: 10px; padding: 15px 20px; width: 100%; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required"/>
         </div>
         <div class="">
           <button type="button" class="btn btn-next1 width-50 ml-auto">Next</button>
@@ -101,25 +102,37 @@
       <div class="form-step">
         <div class="input-group" style="text-align: center;">
             <h2 style="font-weight: 900;">La gare et la date</h2><br><br>
-            <select id="depart" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required>
+            <select id="depart" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required">
               <option value="Not Selected">La gare de départ</option>
               <option value="Marrakech">Marrakech</option>
               <option value="Casablanca">Casablanca</option>
               <option value="Tanger">Tanger</option>
               <option value="Fes">Fes</option>
+              <option value="Tetouan">Tetouan</option>
+              <option value="Oujda">Oujda</option>
+              <option value="Agadir">Agadir</option>
+              <option value="Meknes">Meknes</option>
+              <option value="Dakhla">Dakhla</option>
+              <option value="Errachidia">Errachidia</option>
             </select>
         </div>
         <div class="input-group" style="text-align: center;">
-          <select id="finish" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required>
+          <select id="finish" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required">
             <option value="Not Selected">La gare d'arriver</option>
             <option value="Paris">Paris</option>
             <option value="London">London</option>
             <option value="Tokyo">Tokyo</option>
             <option value="Lisbon">Lisbon</option>
+            <option value="Rome">Rome</option>
+            <option value="Dubai">Dubai</option>
+            <option value="Tunis">Tunis</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Bangkok">Bangkok</option>
+            <option value="Rio">Rio</option>
           </select>
         </div>
         <div class="input-group" style="text-align: center;">
-          <input id="date" type="date" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required/>
+          <input id="date" type="date" min="" style="margin-top: 10px; padding: 15px 20px; width: 100%; text-align: center; border-radius: 8px; border: 2px solid #70afd0; color: #2e6c8e; font-weight: 700; font-size: 13pt;" required="required"/>
         </div>
         <div class="btn-group">
           <button type="button" class="btn btn-prev">Previous</button>
@@ -133,7 +146,7 @@
         <div style="display: flex; flex-direction: column;" id="wrapper">
           
           <div type="button" class="choice">
-            <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+            <img height="80px" width="150px" src="./assets/ram.png">
             <span value="6:30">6:30</span>
             <img width="50px" src="./assets/airplane.png">
             <span value="8:45">8:45</span>
@@ -141,7 +154,7 @@
           </div>
 
           <div type="button" class="choice">
-            <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+            <img height="80px" width="150px" src="./assets/ryan.png">
             <span value="10:00">10:00</span>
             <img width="50px" src="./assets/airplane.png">
             <span value="15:45">15:45</span>
@@ -149,7 +162,7 @@
           </div>
 
           <div type="button" class="choice">
-            <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+            <img height="80px" width="150px" src="./assets/aira.png">
             <span value="14:15">14:15</span>
             <img width="50px" src="./assets/airplane.png">
             <span value="20:00">20:00</span>
@@ -157,7 +170,7 @@
           </div>
 
           <div type="button" class="choice">
-            <img height="80px" width="150px" src="https://beebom.com/wp-content/uploads/2018/12/Lufthansa-Logo.jpg">
+            <img height="80px" width="150px" src="./assets/emi.png">
             <span value="18:00">18:00</span>
             <img width="50px" src="./assets/airplane.png">
             <span value="3:00">3:00</span>
@@ -193,10 +206,17 @@
                     </div>
                 </div>
             </div><br><br>
-            <h4>Choisissez votre place</h4>
-            <div style="display: grid; justify-content: center; grid-template-columns: auto auto auto auto; gap: 20px;">
+            <h4>Choisissez votre place</h4><br><br>
+            <div style="display: grid; justify-content: center; grid-template-columns: auto auto auto auto auto auto auto auto; gap: 20px;">
               
               <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
+              <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button><button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
               <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
               <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
               <button class="place" type="button" style="border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;">➕</button>
@@ -217,31 +237,25 @@
       <div class="form-step">
         <div class="input-group">
             <h1 style="text-align: center;">Les tickets</h1>
-            <div style="height: 500px;display: flex; justify-content: center; align-items: center;">
-            <div class="card content" style="padding: 20px; background-color: #0059ff8a; border-radius: 40px;">
-              <div id="user-info">
-                <p>Nom et prénom : <span>AZIZ</span></p>
-                <p>E-mail : <span>test.aziz@gmail.com</span></p>
-                <p>Date de réservation : <span>12/15/48</span></p>
-                <p>Prix : <span>00000DH</span></p>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <div class="card-content">
+                <div id="user-info">
+
+                </div>
               </div>
-              <div class="qr-code">
-                <p>Code QR :</p>
-                <img height="150px" width="150px" src="./assets/qr-code.svg" alt="code QR"/>
-              </div>
-            </div>
             </div>
         </div>
         <div class="btn-group">
           <button type="button" class="btn btn-prev">Previous</button>
-          <button type="button" value="Download" class="btn-download">Download</button>
+          <button type="button" value="Download" id="download-btn" class="btn-download">Download Tickets as PDF</button>
+
         </div>
       </div>
     </form>
   </main>
 
   <footer class="bg-gray-800 w-full h-[400px]">
-
+    <p>Copyright © 2024 Task Scheduler. All rights reserved.</p>
   </footer>
     
     <script src="./js/main.js"></script>

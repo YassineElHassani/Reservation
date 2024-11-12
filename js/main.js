@@ -36,6 +36,14 @@ const flightOptions = {
 
 let selectedFlight = {};
 
+document.addEventListener("DOMContentLoaded", function() {
+  const dateInput = document.getElementById("date");
+  
+  const today = new Date().toISOString().split("T")[0];
+  
+  dateInput.setAttribute("min", today);
+});
+
 prevBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (formStepsNum > 0) {
@@ -69,7 +77,9 @@ function updateProgressBar() {
 }
 
 function addCountAdult() {
-  countA++;
+  if(countA + countK < 16) {
+    countA++;
+  }
   countAdult.innerHTML = `${countA}`;
   updateTotal();
 }
@@ -83,7 +93,9 @@ function minCountAdult() {
 }
 
 function addCountKids() {
-  countK++;
+  if(countK + countA < 16) {
+    countK++;
+  }
   countKids.innerHTML = `${countK}`;
   updateTotal();
 }
@@ -129,11 +141,129 @@ placeInputs.forEach((place) => {
         place.setAttribute("active", "true");
         countPlaces++;
       } else {
-        alert("You can't select more places than the total count!");
+        alert("You can't select more places!");
       }
     }
   });
 });
+
+function getTickets(ticketData) {
+  const ticketSection = document.getElementById("user-info");
+  ticketSection.innerHTML = "";
+  
+  for (let i = 0; i < ticketData.selectedPlaces; i++) {
+    const ticketHTML = `
+      <div class="ticket-container">
+        <div class="ticket-header">
+          <img src="./assets/airplane.png" alt="Airline Logo" class="ticket-logo">
+          <h2>Flight Ticket</h2>
+          <p>Booking Code: <span class="booking-code">A1B2C3</span></p>
+        </div>
+        <table class="ticket-table">
+          <tr>
+            <th>Nom et prénom</th>
+            <td>${ticketData.name}</td>
+          </tr>
+          <tr>
+            <th>E-mail</th>
+            <td>${ticketData.email}</td>
+          </tr>
+          <tr>
+            <th>Téléphone</th>
+            <td>${ticketData.phone}</td>
+          </tr>
+          <tr>
+            <th>Gare de départ</th>
+            <td>${ticketData.depart}</td>
+          </tr>
+          <tr>
+            <th>Gare d'arrivée</th>
+            <td>${ticketData.finish}</td>
+          </tr>
+          <tr>
+            <th>Compagnie aérienne</th>
+            <td>${ticketData.flight}</td>
+          </tr>
+          <tr>
+            <th>Date de réservation</th>
+            <td>${ticketData.date}</td>
+          </tr>
+          <tr>
+            <th>Heure de départ</th>
+            <td>${ticketData.tempsDeDepart}</td>
+          </tr>
+          <tr>
+            <th>Heure d'arrivée</th>
+            <td>${ticketData.TempsDArrival}</td>
+          </tr>
+          <tr>
+            <th>Prix total</th>
+            <td>${ticketData.totalPrix}</td>
+          </tr>
+        </table>
+        <div class="ticket-footer">
+          <div class="qr-code">
+            <img height="150px" width="150px" src="./assets/qr-code.svg"/>
+          </div>
+        </div>
+      </div>
+    `;
+
+    ticketSection.innerHTML += ticketHTML;
+  }
+
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .ticket-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .ticket-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .ticket-logo {
+      width: 50px;
+      margin-bottom: 10px;
+    }
+    .ticket-header h2 {
+      font-size: 20px;
+      margin: 0;
+    }
+    .booking-code {
+      font-weight: bold;
+      color: #333;
+    }
+    .ticket-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .ticket-table th, .ticket-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+      font-size: 14px;
+    }
+    .ticket-table th {
+      background-color: #e9ecef;
+      font-weight: bold;
+    }
+    .ticket-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 
 function getData() {
   return {
@@ -216,9 +346,24 @@ nextBtn4.forEach((btn) => {
   btn.addEventListener("click", () => {
 
     placesData = {...selectedFlight, ...getData()};
+    getTickets(placesData);
     console.log(placesData);
     formStepsNum++;
     updateFormSteps();
     updateProgressBar();
   });
+});
+
+document.getElementById("download-btn").addEventListener("click", () => {
+  const ticketSection = document.getElementById("user-info");
+  
+  const options = {
+    margin: 10,
+    filename: 'Flight_Tickets.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(options).from(ticketSection).save();
 });
