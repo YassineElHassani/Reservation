@@ -127,16 +127,29 @@ function populateFormData() {
 }
 
 let countPlaces = 0;
+
+function toggleAddingPlaces() {
+  const addingPlaces = document.getElementById("addingPlaces");
+  
+  addingPlaces.style.display = (countPlaces === countA + countK) ? "none" : "flex";
+}
+
 placeInputs.forEach((place) => {
   place.addEventListener("click", () => {
     if (place.getAttribute("active") === "true") {
-      place.setAttribute("style", "border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;");
+      place.setAttribute(
+        "style",
+        "border-radius: 5px; width: 50px; height: 50px; font-size: 15pt; color: #2e6c8e; background-color: #a6cde2; border: 3px solid #2e6c8e;"
+      );
       place.textContent = "➕";
       place.setAttribute("active", "false");
       countPlaces--;
     } else {
       if (countPlaces < countA + countK) {
-        place.setAttribute("style", "border-radius: 15px; width: 50px; height: 50px; font-size: 15pt; color: #0ce053; background-color: #a6cde2; border: 3px solid #0ce053;");
+        place.setAttribute(
+          "style",
+          "border-radius: 15px; width: 50px; height: 50px; font-size: 15pt; color: #0ce053; background-color: #a6cde2; border: 3px solid #0ce053;"
+        );
         place.textContent = "✅";
         place.setAttribute("active", "true");
         countPlaces++;
@@ -144,6 +157,7 @@ placeInputs.forEach((place) => {
         alert("You can't select more places!");
       }
     }
+    toggleAddingPlaces();
   });
 });
 
@@ -153,60 +167,34 @@ function getTickets(ticketData) {
   
   for (let i = 0; i < ticketData.selectedPlaces; i++) {
     const ticketHTML = `
-      <div class="ticket-container">
-        <div class="ticket-header">
-          <img src="./assets/airplane.png" alt="Airline Logo" class="ticket-logo">
-          <h2>Flight Ticket</h2>
-          <p>Booking Code: <span class="booking-code">A1B2C3</span></p>
+      <div id="ticket-container">
+        <div class="top">
+            <img src="./assets/airplane.png">
+            <p>AirLine</p>
         </div>
-        <table class="ticket-table">
-          <tr>
-            <th>Nom et prénom</th>
-            <td>${ticketData.name}</td>
-          </tr>
-          <tr>
-            <th>E-mail</th>
-            <td>${ticketData.email}</td>
-          </tr>
-          <tr>
-            <th>Téléphone</th>
-            <td>${ticketData.phone}</td>
-          </tr>
-          <tr>
-            <th>Gare de départ</th>
-            <td>${ticketData.depart}</td>
-          </tr>
-          <tr>
-            <th>Gare d'arrivée</th>
-            <td>${ticketData.finish}</td>
-          </tr>
-          <tr>
-            <th>Compagnie aérienne</th>
-            <td>${ticketData.flight}</td>
-          </tr>
-          <tr>
-            <th>Date de réservation</th>
-            <td>${ticketData.date}</td>
-          </tr>
-          <tr>
-            <th>Heure de départ</th>
-            <td>${ticketData.tempsDeDepart}</td>
-          </tr>
-          <tr>
-            <th>Heure d'arrivée</th>
-            <td>${ticketData.TempsDArrival}</td>
-          </tr>
-          <tr>
-            <th>Prix total</th>
-            <td>${ticketData.totalPrix}</td>
-          </tr>
-        </table>
-        <div class="ticket-footer">
-          <div class="qr-code">
-            <img height="150px" width="150px" src="./assets/qr-code.svg"/>
-          </div>
+        <div class="sec-top">
+            <p class="para">Date: ${ticketData.date}</p>
+            <p class="para">Flight Company: ${ticketData.flight}</p>
         </div>
-      </div>
+        <div class="inside-info">
+            <p>Name: ${ticketData.name}</p>
+            <p>Email: ${ticketData.email}</p>
+            <p>Phone: ${ticketData.phone}</p>
+        </div><br>
+        <div class="sec-info">
+            <p>Départ: ${ticketData.depart}</p>
+            <p>Arrivée: ${ticketData.finish}</p>
+        </div><br>
+        <div class="ter-info">
+            <p>${ticketData.tempsDeDepart}</p>
+            <p>${ticketData.TempsDArrival}</p>
+        </div>
+        <div class="bottom">
+            <p>BOOKING CODE: <span><b>A1B2C3</b></span></p>
+            <p class="total"><b>${ticketData.totalPrix}</b></p>
+            <img src="./assets/qr-code.svg">
+        </div>
+    </div><br><br><br>
     `;
 
     ticketSection.innerHTML += ticketHTML;
@@ -214,51 +202,102 @@ function getTickets(ticketData) {
 
   const style = document.createElement("style");
   style.innerHTML = `
-    .ticket-container {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 2px solid #333;
-      border-radius: 10px;
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    #ticket-container {
+        height: 300px;
+        width: 600px;
+        background-image: url('./assets/lineVols.png');
+        background-position: center;
+        border-radius: 30px;
+        border: dashed 2px black;
     }
-    .ticket-header {
-      text-align: center;
-      margin-bottom: 20px;
+    .top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+        height: 50px;
+        width: 600px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
     }
-    .ticket-logo {
-      width: 50px;
-      margin-bottom: 10px;
+    .top img {
+        height: 40px;
+        width: 40px;
     }
-    .ticket-header h2 {
-      font-size: 20px;
-      margin: 0;
+    .top p {
+        color: #cac8c8;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 40px;
     }
-    .booking-code {
-      font-weight: bold;
-      color: #333;
+    .sec-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        width: 600px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        z-index: 1;
     }
-    .ticket-table {
-      width: 100%;
-      border-collapse: collapse;
+    .sec-top .para {
+        padding: 10px;
+        color: black;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
-    .ticket-table th, .ticket-table td {
-      padding: 10px;
-      border: 1px solid #ddd;
-      text-align: left;
-      font-size: 14px;
+    .inside-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+        flex-wrap: wrap;
+        color: black;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
-    .ticket-table th {
-      background-color: #e9ecef;
-      font-weight: bold;
+    .sec-info {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: black;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
-    .ticket-footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #555;
+    .ter-info {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: black;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: blue;
+        height: 50px;
+        width: 600px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin-top: 24px;
+    }
+    .bottom p {
+        color: #FFF;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-left: 20px;
+    }
+    .bottom p span {
+        font-size: 20px;
+    }
+    .bottom .total {
+        color: red;
+        font-size: large;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .bottom img {
+        height: 50px;
+        width: 50px;
+        margin-right: 20px;
     }
   `;
   document.head.appendChild(style);
