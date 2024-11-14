@@ -214,7 +214,7 @@ function getTickets(ticketData) {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: blue;
+        background-color: #2e6c8e;
         height: 50px;
         width: 600px;
         border-top-left-radius: 30px;
@@ -274,7 +274,7 @@ function getTickets(ticketData) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: blue;
+        background-color: #2e6c8e;
         height: 50px;
         width: 600px;
         border-bottom-left-radius: 30px;
